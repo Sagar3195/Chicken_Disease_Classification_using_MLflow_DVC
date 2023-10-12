@@ -3,7 +3,7 @@ from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTraining
 
 
 
-STAGE_NAME = "Data Ingestion stage"
+STAGE_NAME = "Data ingestion stage"
 
 
 try:
