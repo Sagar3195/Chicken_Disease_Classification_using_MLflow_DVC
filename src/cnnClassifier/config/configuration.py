@@ -4,7 +4,8 @@ from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import (DataIngestionConfig, 
                                                PrepareBaseModelConfig,
                                                PrepareCallbacksConfig,
-                                               TrainingConfig)
+                                               TrainingConfig,
+                                               EvaluationConfig)
 
 
 
@@ -94,3 +95,16 @@ class ConfigurationManager:
         )
 
         return training_config
+
+
+    
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/Chicken-fecal-images",
+            mlflow_uri="https://dagshub.com/saggyd95/Chicken_Disease_Classification_using_MLflow_DVC.mlflow",
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config
